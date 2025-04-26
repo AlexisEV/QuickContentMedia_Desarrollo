@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+
+</head>
+<body>
+    <div class="login-container">
+        <h1>Iniciar Sesión</h1>
+        <form id="formularioLogin" class="login-form">
+            <input type="text" name="nombre" placeholder="Nombre de usuario" required>
+            <input type="email" name="correo" placeholder="Correo electrónico" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById('formularioLogin').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const datos = {
+            nombre: formData.get('nombre'),
+            correo: formData.get('correo')
+        };
+
+        const respuesta = await fetch('/api/registro', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datos)
+        });
+
+        const html = await respuesta.text();
+        document.body.innerHTML = html;
+    });
+    </script>
+</body>
+</html>

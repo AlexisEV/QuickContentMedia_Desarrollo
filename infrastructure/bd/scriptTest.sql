@@ -1,0 +1,9 @@
+CREATE DATABASE QCM;
+
+\c QCM
+
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NOT NULL
+);
