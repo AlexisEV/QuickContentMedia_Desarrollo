@@ -20,13 +20,5 @@ class Usuario:
 
     @classmethod
     def buscar_por_nombre(cls, nombre):
-        conexion = obtener_conexion()
-        cursor = conexion.cursor()
-        query = "SELECT id, nombre, correo FROM usuarios WHERE nombre = %s;"
-        cursor.execute(query, (nombre,))
-        row = cursor.fetchone()
-        cursor.close()
-        conexion.close()
-        if row:
-            return cls(id_usuario=row[0], nombre=row[1], correo=row[2])
+        # TODO XD Ejemplo nomas
         return None

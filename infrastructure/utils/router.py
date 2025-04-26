@@ -1,6 +1,8 @@
 routes_get = {}
 routes_post = {}
 
+# Para generar las APIREST de modo que no necesitamos una clase con mil if de GET y POST en handler.py
+
 def route_get(path):
     def decorator(func):
         routes_get[path] = func

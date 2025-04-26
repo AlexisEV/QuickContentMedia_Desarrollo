@@ -71,13 +71,6 @@ def mostrar_formulario(handler):
     contenido = interfaz.mostrar_formulario()
     responder_html(handler, contenido)
 
-@route_post('/api/login')
-def login(handler):
-    datos = handler.leer_json()
-    respuesta = controlador.buscar_usuario(datos['nombre'])
-    html = interfaz.mostrar_bienvenida(respuesta)
-    responder_html(handler, html)
-
 @route_post('/api/registro')
 def registro(handler):
     datos = handler.leer_json()

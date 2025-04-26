@@ -17,3 +17,8 @@ PostgresSQL 17
 Ejecución
 -
 - Ejecutar el archivo **main.py**
+
+Estructura
+-
+En main.py → handler.py → app/intefaces → app/controllers → domain/entities 
+- handler.py  = Se encarga de manejar los endpoints y ApiRest. 

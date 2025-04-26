@@ -1,6 +1,7 @@
 import json
+# Para aayudar con las funcionidades base de hanler.py
 
-# Para mostrar html al navegador
+# Para mostrar un html en el navegador
 def responder_html(handler, contenido_html):
     handler.send_response(200)
     handler.send_header('Content-Type', 'text/html')
