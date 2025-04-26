@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrar Clientes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="sidebar"></div>
+        <div class="main-content">
+            <div class="content-header">
+                <h2 class="small-title">Clientes</h2>
+                <div class="search-container">
+                    <input type="text" id="search-client" class="search-input" placeholder="Código">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+            
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Username</th>
+                            <th>Saldo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>Juan</td>
+                            <td>Pérez</td>
+                            <td>juan.perez</td>
+                            <td>S/.1,250</td>
+                            <td>
+                                <button class="button-full-gray small-btn">Gestionar Saldo</button>
+                                <button class="button-full-gray small-btn">Ver historial</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>María</td>
+                            <td>Gómez</td>
+                            <td>maria.gomez</td>
+                            <td>S/.3,420</td>
+                            <td>
+                                <button class="button-full-gray small-btn">Gestionar Saldo</button>
+                                <button class="button-full-gray small-btn">Ver historial</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>003</td>
+                            <td>Carlos</td>
+                            <td>López</td>
+                            <td>carlos.lopez</td>
+                            <td>S/.750</td>
+                            <td>
+                                <button class="button-full-gray small-btn">Gestionar Saldo</button>
+                                <button class="button-full-gray small-btn">Ver historial</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Ana</td>
+                            <td>Martínez</td>
+                            <td>ana.martinez</td>
+                            <td>S/.2,150</td>
+                            <td>
+                                <button class="button-full-gray small-btn">Gestionar Saldo</button>
+                                <button class="button-full-gray small-btn">Ver historial</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana modal, Gestionar saldo -->
+
+    <div id="saldoModal" class="modal">
+        <form id="saldoForm">
+        <div class="modal-content">
+          <span id="closeModal" class="close">&times;</span>
+          <h2 class="small-title">Gestionar Saldo</h2>
+            <label for="nuevoSaldo" class="form-label">Saldo:</label><br>
+            <input type="number" id="nuevoSaldo" class="form-input" name="nuevoSaldo" required><br>
+            <button type="submit" class="button-full" id="small-btn">Confirmar</button>
+        </div>
+        </form>
+    </div>
+
+    <!-- Ventana modal, Historial de Descargas -->
+    <div id="historialModal" class="modal">
+        <div class="modal-content">
+        <span id="closeHistorial" class="close">&times;</span>
+        <h2 class="small-title">Historial de Descargas</h2>
+        <div class="table">
+            <table>
+            <thead>
+                <tr>
+                <th>Nombre Contenido</th>
+                <th>Código Contenido</th>
+                <th>Formato</th>
+                <th>Autor</th>
+                <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody id="historialTableBody">
+                <tr>
+                <td>Introducción a HTML</td>
+                <td>001</td>
+                <td>Imagen</td>
+                <td>Juan Pérez</td>
+                <td>Programación</td>
+                </tr>
+                <tr>
+                <td>Diseño UX Básico</td>
+                <td>002</td>
+                <td>Video</td>
+                <td>María Gómez</td>
+                <td>Diseño</td>
+                </tr>
+                <tr>
+                <td>Python para Principiantes</td>
+                <td>003</td>
+                <td>Audio</td>
+                <td>Carlos López</td>
+                <td>Programación</td>
+                </tr>
+                <tr>
+                <td>Fotografía Digital</td>
+                <td>004</td>
+                <td>Imagen</td>
+                <td>Ana Martínez</td>
+                <td>Arte</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const modal = document.getElementById("saldoModal");
+    const closeModal = document.getElementById("closeModal");
+    const gestionarBtns = document.querySelectorAll(".button-full-gray");
+
+    const historialModal = document.getElementById("historialModal");
+    const closeHistorial = document.getElementById("closeHistorial");
+
+    // Mostrar modal al hacer clic en "Gestionar Saldo" o "Ver Historial"
+    gestionarBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.textContent.includes("Gestionar Saldo")) {
+          modal.style.display = "flex";
+        } else if (btn.textContent.includes("Ver historial")) {
+          historialModal.style.display = "flex";
+        }
+      });
+    });
+
+    // Cerrar modal de saldo
+    closeModal.onclick = () => {
+      modal.style.display = "none";
+    }
+
+    // Cerrar modal de historial
+    closeHistorial.onclick = () => {
+      historialModal.style.display = "none";
+    }
+
+    // Cerrar cualquier modal al hacer clic fuera
+    window.onclick = (event) => {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      } else if (event.target == historialModal) {
+        historialModal.style.display = "none";
+      }
+    }
+</script>
+
+</html>
