@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Administración</title>
+</head>
+<body>
+  <div class="logo">QuickContentMedia</div>
+  <div class="sub">by Pentadocs</div>
+
+  <div class="nav">
+    <a href="/admin/promociones">Administrar Promociones</a> <br>
+    <a href="/admin/categorias">Administrar Categorías</a> <br>
+    <a href="/admin/mostrarAdministrarCliente">Administrar Clientes</a> <br>
+    <a href="/admin/contenidos">Administrar Contenidos</a> <br>
+  </div>
+
+  <div class="content">
+    {% block contenido %}{% endblock %}
+  </div>
+</body>
+</html>

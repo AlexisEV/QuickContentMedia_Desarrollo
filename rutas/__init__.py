@@ -1,0 +1,5 @@
+import rutas.UIAccesoAlPortal
+import rutas.UIInicioAdmin
+import rutas.UIInicioCliente
+import rutas.UIRegistroCliente
+import rutas.UIAdministrarCliente

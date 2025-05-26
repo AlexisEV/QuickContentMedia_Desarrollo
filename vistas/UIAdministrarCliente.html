@@ -1,0 +1,50 @@
+{% extends "BarraLateralAdmin.html" %}
+
+{% block contenido %}
+    {% if errorBuscar %}
+        <p style="color:red;">Cliente no encontrado</p>
+    {% endif %}
+
+    <form method="GET" action="/admin/buscarClientePorID">
+      <input type="number" name="id_usuario" placeholder="ID de usuario" required>
+      <button type="submit">Buscar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>id_usuario</th>
+                <th>username</th>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>saldo</th>
+                <th>excliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in listClientes %}
+            <tr>
+                <td>{{ cliente.id_usuario }}</td>
+                <td>{{ cliente.username }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.apellido }}</td>
+                <td>{{ cliente.saldo }}</td>
+                <td>{{ cliente.excliente }}</td>
+                <td>
+                    <form method="POST" action="/admin/mostrarHistorialCliente">
+                       <input type="hidden" name="id_usuario" value="{{ cliente.id_usuario }}">
+                       <button type="submit">Ver Historial</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="/admin/modificarSaldoCliente">
+                       <input type="hidden" name="id_usuario" value="{{ cliente.id_usuario }}">
+                       <button type="submit">Gestionar saldo</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
