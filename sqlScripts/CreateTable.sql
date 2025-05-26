@@ -3,10 +3,10 @@ CREATE TABLE ADMINISTRADOR (id_usuario int4 NOT NULL, acceso bool NOT NULL, PRIM
 CREATE TABLE CLIENTE (id_usuario int4 NOT NULL, saldo int4 NOT NULL, excliente bool NOT NULL, PRIMARY KEY (id_usuario));
 CREATE TABLE REGALO (id_regalo SERIAL NOT NULL, fecha date NOT NULL, abierto bool NOT NULL, id_usuario_emisor int4 NOT NULL, id_usuario_receptor int4 NOT NULL, id_contenido int4 NOT NULL, PRIMARY KEY (id_regalo));
 CREATE TABLE HISTORIAL (id_historial SERIAL NOT NULL, precio_total int4 NOT NULL, id_usuario int4 NOT NULL, PRIMARY KEY (id_historial));
-CREATE TABLE CONTENIDO (id_contenido SERIAL NOT NULL, formato varchar(10) NOT NULL, autor varchar(50) NOT NULL, archivo varchar(255) NOT NULL, nombre varchar(100) NOT NULL, precio int4 NOT NULL, tamano_archivo float8 NOT NULL, descripcion varchar(255) NOT NULL, id_tipo_archivo int4 NOT NULL, id_promocion int4 NOT NULL, id_categoria int4 NOT NULL, PRIMARY KEY (id_contenido));
+CREATE TABLE CONTENIDO (id_contenido SERIAL NOT NULL, formato varchar(20) NOT NULL, autor varchar(50) NOT NULL, archivo varchar(255) NOT NULL, nombre varchar(100) NOT NULL, precio int4 NOT NULL, tamano_archivo float8 NOT NULL, descripcion varchar(255) NOT NULL, id_tipo_archivo int4 NOT NULL, id_promocion int4 NOT NULL, id_categoria int4 NOT NULL, PRIMARY KEY (id_contenido));
 CREATE TABLE TIPO_ARCHIVO (id_tipo_archivo SERIAL NOT NULL, extension varchar(10) NOT NULL, tipo_contenido varchar(20) NOT NULL, mime_type varchar(255) NOT NULL, PRIMARY KEY (id_tipo_archivo));
 CREATE TABLE PROMOCION (id_promocion SERIAL NOT NULL, descuento int4 NOT NULL, fecha_inicio date NOT NULL, fecha_fin date NOT NULL, PRIMARY KEY (id_promocion));
-CREATE TABLE CATEGORIA (id_categoria SERIAL NOT NULL, nombre varchar(10) NOT NULL, id_categoria_padre int4, PRIMARY KEY (id_categoria));
+CREATE TABLE CATEGORIA (id_categoria SERIAL NOT NULL, nombre varchar(20) NOT NULL, id_categoria_padre int4, PRIMARY KEY (id_categoria));
 CREATE TABLE DESCARGA (id_descarga SERIAL NOT NULL, fecha date NOT NULL, id_contenido int4 NOT NULL, id_usuario int4 NOT NULL, id_calificacion int4 NOT NULL, id_ranking int4 NOT NULL, PRIMARY KEY (id_descarga));
 CREATE TABLE CALIFICACION (id_calificacion SERIAL NOT NULL, fecha date NOT NULL, nota int4, id_usuario int4 NOT NULL, id_ranking int4 NOT NULL, PRIMARY KEY (id_calificacion));
 CREATE TABLE RANKING (id_ranking SERIAL NOT NULL, tipo varchar(20) NOT NULL, fecha_inicio_semanal date NOT NULL, PRIMARY KEY (id_ranking));
